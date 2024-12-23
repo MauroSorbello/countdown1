@@ -1,0 +1,133 @@
+<!-- Author Mauro Sorbello Tyr -->
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viking Run</title>
+    <style>
+      body {
+        font-family: 'Montserrat';
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+        height: 100vh;
+      }
+
+      .countdown {
+        text-align: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .countdown h1 {
+        font-size: 2.5em;
+        font-style: bold;
+        margin-bottom: 20px;
+        color: #00aeef;
+      }
+
+      .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .time-box {
+        background: #004990;
+        color: white;
+        font-size: 1.7em;
+        font-style: bold;
+        padding: 15px;
+        border-radius: 5px;
+        min-width: 60px;
+        text-align: center;
+      }
+
+      .time-box span {
+        display: block;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .time-box label {
+        font-size: 0.8em;
+        text-transform: uppercase;
+        margin-top: 5px;
+      }
+      @media (max-width: 600px) {
+        body {
+          transform: scale(0.5); 
+          transform-origin: top center; 
+        }
+        .countdown h1 {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="countdown">
+      <h1>🚀 Viking Run | March 29, 2025</h1>
+      <div class="countdown-timer">
+        <div class="time-box">
+          <span id="days">00</span>
+          <label>DAYS</label>
+        </div>
+        <div class="time-box">
+          <span id="hours">00</span>
+          <label>HOURS</label>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <label>MINS</label>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <label>SECS</label>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Inicio del JavaScript
+      function startCountdown(targetDate) {
+        function updateCountdown() {
+          const now = new Date().getTime();
+          const distance = targetDate - now;
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("days").textContent = days;
+          document.getElementById("hours").textContent = hours;
+          document.getElementById("minutes").textContent = minutes;
+          document.getElementById("seconds").textContent = seconds;
+
+          if (distance < 0) {
+            clearInterval(interval);
+            document.querySelector(".countdown").innerHTML = "<h1>¡El tiempo ha terminado!</h1>";
+          }
+        }
+
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+      }
+
+      // Cambiar esta fecha al objetivo deseado
+      const targetDate = new Date("2025-03-29T02:59:59").getTime();
+      startCountdown(targetDate);
+      // Fin del JavaScript
+    </script>
+  </body>
+</html>
