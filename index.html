@@ -1,5 +1,3 @@
-<!-- Author Mauro Sorbello Tyr -->
-
 <!DOCTYPE html>
 <html lang="en">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -13,7 +11,8 @@
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start; /* Posicionar en la parte superior */
         align-items: center;
         padding: 0 1rem;
         height: 100vh;
@@ -26,11 +25,12 @@
         border-radius: 10px;
         flex-wrap: wrap;
         gap: 1rem;
+        margin-bottom: 10px; /* Espacio después de que el contador termine */
       }
 
       .countdown h1 {
         font-size: 2.5em;
-        font-style: bold;
+        font-weight: bold;
         margin-bottom: 20px;
         color: #00aeef;
       }
@@ -45,7 +45,7 @@
         background: #004990;
         color: white;
         font-size: 1.7em;
-        font-style: bold;
+        font-weight: bold;
         padding: 15px;
         border-radius: 5px;
         min-width: 60px;
@@ -63,10 +63,11 @@
         text-transform: uppercase;
         margin-top: 5px;
       }
+
       @media (max-width: 600px) {
         body {
-          transform: scale(0.5); 
-          transform-origin: top center; 
+          transform: scale(0.5);
+          transform-origin: top center;
         }
         .countdown h1 {
           font-size: 1.5em;
